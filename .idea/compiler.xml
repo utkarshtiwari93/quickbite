@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
-        <module name="eureka-server" />
         <module name="restaurant-service" />
+        <module name="order-service" />
+        <module name="eureka-server" />
       </profile>
       <profile name="Annotation profile for user-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -21,7 +22,6 @@
         <module name="delivery-service" />
         <module name="user-service" />
         <module name="payment-service" />
-        <module name="order-service" />
         <module name="search-service" />
         <module name="notification-service" />
       </profile>
