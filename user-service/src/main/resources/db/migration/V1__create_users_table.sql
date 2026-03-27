@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS users (
+    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email         VARCHAR(255) NOT NULL UNIQUE,
+    phone         VARCHAR(15)  NOT NULL UNIQUE,
+    password_hash VARCHAR(60)  NOT NULL,
+    full_name     VARCHAR(100) NOT NULL,
+    role          VARCHAR(30)  NOT NULL,
+    is_active     BOOLEAN      NOT NULL DEFAULT TRUE,
+    created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS refresh_tokens (
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id     BIGINT       NOT NULL,
+    token       VARCHAR(512) NOT NULL UNIQUE,
+    expires_at  TIMESTAMP    NOT NULL,
+    is_revoked  BOOLEAN      NOT NULL DEFAULT FALSE,
+    created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_refresh_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
