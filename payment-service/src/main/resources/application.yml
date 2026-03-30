@@ -1,16 +1,16 @@
 server:
-  port: 8083
+  port: 8084
 
 spring:
   application:
-    name: order-service
+    name: payment-service
 
   threads:
     virtual:
       enabled: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/orders_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/payments_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: UTKARSH@123
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,11 +28,6 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
 
-  data:
-    redis:
-      host: localhost
-      port: 6379
-
   kafka:
     bootstrap-servers: localhost:9092
     producer:
@@ -41,7 +36,7 @@ spring:
       properties:
         spring.json.add.type.headers: false
     consumer:
-      group-id: order-service
+      group-id: payment-service
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
