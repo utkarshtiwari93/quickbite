@@ -10,15 +10,15 @@ spring:
       enabled: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/orders_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://host.docker.internal:3306/orders_db?createDatabaseIfNotExist=true
     username: root
     password: UTKARSH@123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: validate
-    show-sql: false
+      ddl-auto: update   # 🔥 FIXED
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
@@ -30,11 +30,11 @@ spring:
 
   data:
     redis:
-      host: localhost
+      host: host.docker.internal   # 🔥 FIXED
       port: 6379
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: host.docker.internal:9092   # 🔥 FIXED
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -52,6 +52,15 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://quickbite-eureka:8761/eureka/   # 🔥 FIXED
   instance:
     prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always

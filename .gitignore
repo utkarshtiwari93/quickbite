@@ -1,0 +1,35 @@
+# Maven & Java
+**/.m2/
+**/target/
+*.class
+*.jar
+*.war
+*.zip
+!/.m2/settings.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Build
+.gradle/
+build/
+out/
+
+# Environment
+.env
+.env.local
+node_modules/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+logs/

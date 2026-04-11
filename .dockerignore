@@ -1,0 +1,63 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node/Frontend
+node_modules
+npm-debug.log
+yarn-error.log
+dist
+.env.local
+.env.*.local
+
+# Java/Maven
+target
+.m2
+*.iml
+.idea
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# IDE
+.vscode
+.DS_Store
+.env
+*.swp
+*.swo
+*~
+
+# Documentation
+README.md
+HELP.md
+docs
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Build artifacts
+build
+out
+logs
+*.log
+
+# Database
+*.db
+*.sqlite
+db_data
+
+# Test coverage
+coverage
+.nyc_output

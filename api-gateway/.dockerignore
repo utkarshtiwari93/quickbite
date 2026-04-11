@@ -1,0 +1,10 @@
+.m2
+target
+.git
+.gitignore
+node_modules
+.mvn
+mvnw
+mvnw.cmd
+.idea
+*.iml
