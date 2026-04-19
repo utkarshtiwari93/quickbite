@@ -10,10 +10,10 @@ spring:
       enabled: true
 
   elasticsearch:
-    uris: http://quickbite-elasticsearch:9200   
+    uris: http://elasticsearch:9200   
 
   kafka:
-    bootstrap-servers: quickbite-kafka:9092   
+    bootstrap-servers: kafka:9092   
     consumer:
       group-id: search-service
       auto-offset-reset: earliest

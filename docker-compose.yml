@@ -76,6 +76,11 @@ services:
       - "9200:9200"
     networks:
       - quickbite-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200 >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
 
   # ===== SPRING BOOT SERVICES =====
 
@@ -232,9 +237,12 @@ services:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
-      - elasticsearch
-      - kafka
-      - eureka-server
+      elasticsearch:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+      eureka-server:
+        condition: service_started
     networks:
       - quickbite-network
 
